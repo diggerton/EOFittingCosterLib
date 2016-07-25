@@ -1,0 +1,10 @@
+SELECT it.typeID
+  , it.typeName
+FROM invTypes AS it
+JOIN invGroups AS ig ON it.groupID=ig.groupID
+JOIN invCategories AS ic ON ig.categoryID=ic.categoryID
+WHERE it.groupID IN 
+(
+  SELECT groupID FROM invGroups 
+  WHERE categoryID IN (4, 6, 7, 8, 18, 20, 22, 32)
+)
